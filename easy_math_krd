@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Центр математики | Краснодар</title>
+
+    <!-- Подключаем современный шрифт -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* --- БАЗОВЫЕ НАСТРОЙКИ --- */
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+
+            font-family: 'Montserrat', sans-serif;
+
+            color: #1e293b;
+
+            background-color: #f8fafc;
+
+            line-height: 1.6;
+
+            scroll-behavior: smooth; /* Плавная прокрутка по меню */
+
+        }
+
+        .container {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            padding: 0 20px;
+
+        }
+
+        .section-title {
+
+            text-align: center;
+
+            font-size: 2.2em;
+
+            color: #1e3a8a;
+
+            margin-bottom: 40px;
+
+            font-weight: 800;
+
+        }
+
+        /* --- МЕНЮ (ШАПКА) --- */
+
+        header {
+
+            background-color: rgba(255, 255, 255, 0.95);
+
+            position: fixed;
+
+            width: 100%;
+
+            top: 0;
+
+            z-index: 1000;
+
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+
+            backdrop-filter: blur(5px);
+
+        }
+
+        .nav {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            padding: 15px 20px;
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+        }
+
+        .logo { font-weight: 800; font-size: 1.5em; color: #1e3a8a; text-decoration: none; }
+
+        .nav-links a {
+
+            text-decoration: none;
+
+            color: #475569;
+
+            font-weight: 600;
+
+            margin-left: 25px;
+
+            font-size: 0.95em;
+
+            transition: color 0.3s;
+
+        }
+
+        .nav-links a:hover { color: #3b82f6; }
+
+        /* --- ГЛАВНЫЙ ЭКРАН (HERO) --- */
+
+        .hero {
+
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+
+            color: white;
+
+            text-align: center;
+
+            padding: 180px 20px 120px 20px;
+
+        }
+
+        .hero h1 { font-size: 3.5em; font-weight: 800; margin-bottom: 20px; }
+
+        .hero p { font-size: 1.2em; max-width: 600px; margin: 0 auto 40px auto; opacity: 0.9; }
+
+        .btn {
+
+            display: inline-block;
+
+            background-color: #ffffff;
+
+            color: #1e3a8a;
+
+            padding: 16px 36px;
+
+            border-radius: 50px;
+
+            text-decoration: none;
+
+            font-weight: 800;
+
+            font-size: 1.1em;
+
+            transition: transform 0.2s, box-shadow 0.2s;
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+            border: none;
+
+            cursor: pointer;
+
+        }
+
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+
+        .btn-wa { background-color: #25D366; color: white; }
+
+        /* --- БЛОК О НАС + ФОТО --- */
+
+        .about-section { padding: 80px 0; background: white; }
+
+        .about-grid { display: flex; align-items: center; gap: 50px; }
+
+        .about-text h2 { color: #1e3a8a; font-size: 2em; margin-bottom: 20px; }
+
+        .about-text p { font-size: 1.1em; color: #475569; margin-bottom: 15px; }
+
+        /* Место для фото */
+
+        .about-image {
+
+            width: 100%;
+
+            max-width: 450px;
+
+            height: 350px;
+
+            background-color: #e2e8f0;
+
+            border-radius: 20px;
+
+            background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop'); /* Сюда можно вставить свою ссылку на фото */
+
+            background-size: cover;
+
+            background-position: center;
+
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+        }
+
+        /* --- НАПРАВЛЕНИЯ / ПРЕИМУЩЕСТВА --- */
+
+        .features-section { padding: 80px 0; background-color: #f1f5f9; }
+
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+        .card {
+
+            background: white;
+
+            padding: 40px 30px;
+
+            border-radius: 20px;
+
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+
+            transition: transform 0.3s;
+
+        }
+
+        .card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+
+        .card h3 { color: #1e3a8a; font-size: 1.3em; margin-bottom: 15px; }
+
+        .card ul { padding-left: 20px; color: #475569; }
+
+        .card li { margin-bottom: 10px; }
+
+        /* --- ЦЕНЫ --- */
+
+        .pricing-section { padding: 80px 0; background: white; }
+
+        .price-card { text-align: center; border: 2px solid #e2e8f0; }
+
+        .price-card:hover { border-color: #3b82f6; }
+
+        .price { font-size: 2.5em; font-weight: 800; color: #1e3a8a; margin: 15px 0; }
+
+        /* --- ОТЗЫВЫ --- */
+
+        .reviews-section { padding: 80px 0; background-color: #f1f5f9; }
+
+        .review-card { background: white; border: 1px solid #e2e8f0; }
+
+        .stars { color: #fbbf24; font-size: 1.2em; margin-bottom: 15px; }
+
+        .review-text { font-style: italic; color: #475569; margin-bottom: 20px; font-size: 1.05em; }
+
+        .review-author { font-weight: 800; color: #1e3a8a; }
+
+        .btn-form {
+
+            background-color: #1e3a8a;
+
+            color: white;
+
+            margin-top: 40px;
+
+        }
+
+        .btn-form:hover { background-color: #3b82f6; }
+
+        /* --- ПОДВАЛ (КОНТАКТЫ) --- */
+
+        footer {
+
+            background-color: #0f172a;
+
+            color: #94a3b8;
+
+            padding: 60px 20px;
+
+            text-align: center;
+
+        }
+
+        footer h3 { color: white; margin-bottom: 20px; font-size: 1.5em; }
+
+        footer p { margin-bottom: 10px; }
+
+        .footer-links a { color: #3b82f6; text-decoration: none; margin: 0 10px; }
+
+        /* --- АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ --- */
+
+        @media (max-width: 768px) {
+
+            .nav-links { display: none; } /* Скрываем меню на телефоне, чтобы не мешало */
+
+            .hero h1 { font-size: 2.2em; }
+
+            .about-grid { flex-direction: column; text-align: center; }
+
+            .about-image { max-width: 100%; }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ШАПКА САЙТА -->
+
+    <header>
+
+        <div class="nav">
+
+            <a href="#" class="logo">MathEasy</a>
+
+            <div class="nav-links">
+
+                <a href="#about">О нас</a>
+
+                <a href="#features">Направления</a>
+
+                <a href="#prices">Цены</a>
+
+                <a href="#reviews">Отзывы</a>
+
+                <a href="#contacts">Контакты</a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ГЛАВНЫЙ ЭКРАН -->
+
+    <section class="hero">
+
+        <h1>Математика без слёз</h1>
+
+        <p>Подготовка к ОГЭ/ЕГЭ и помощь по школьной программе в Краснодаре. Индивидуальный подход и дружелюбная атмосфера.</p>
+
+        <!-- ЗАМЕНИ НОМЕР ТЕЛЕФОНА НА СВОЙ -->
+
+        <a href="https://wa.me/79615265233" class="btn btn-wa" target="_blank">Записаться на занятие</a>
+
+    </section>
+
+    <!-- БЛОК О НАС -->
+
+    <section id="about" class="about-section">
+
+        <div class="container about-grid">
+
+            <div class="about-text">
+
+                <h2>О нашем центре</h2>
+
+                <p>Мы помогаем школьникам полюбить математику и уверенно сдать экзамены. Опытные преподаватели, понятные объяснения и дружелюбная атмосфера.</p>
+
+                <p>Наша цель — чтобы каждый ученик поверил в свои силы и перестал бояться сложных задач. Мы работаем как с отличниками, так и с теми, кто хочет подтянуть оценки.</p>
+
+            </div>
+
+            <!-- ФОТО: Пока стоит картинка-заглушка. Как вставить свое - читай ниже -->
+
+            <div class="about-image"></div>
+
+        </div>
+
+    </section>
+
+    <!-- НАПРАВЛЕНИЯ -->
+
+    <section id="features" class="features-section">
+
+        <div class="container">
+
+            <h2 class="section-title">Наши направления</h2>
+
+            <div class="grid-cards">
+
+                <div class="card">
+
+                    <h3>📚 Школьная программа</h3>
+
+                    <p>Поможем разобраться в темах с 5 по 11 класс, подтянем оценки и подготовим к контрольным.</p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>🎯 Подготовка к ОГЭ и ЕГЭ</h3>
+
+                    <p>Разберем все типы заданий, научим решать задачи на время и дадим уверенность перед экзаменом.</p>
+
+                </div>
+
+                <div class="card">
+
+                    <h3>🧠 Развитие мышления</h3>
+
+                    <p>Олимпиадные задачи и нестандартные подходы для тех, кто хочет знать математику глубже.</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ЦЕНЫ -->
+
+    <section id="prices" class="pricing-section">
+
+        <div class="container">
+
+            <h2 class="section-title">Стоимость занятий</h2>
+
+            <div class="grid-cards">
+
+                <div class="card price-card">
+
+                    <h3>Индивидуально</h3>
+
+                    <div class="price">1 500 ₽</div>
+
+                    <p>За одно занятие (60 минут)</p>
+
+                    <!-- ЗАМЕНИ ТЕКСТ В СООБЩЕНИИ WA.ME НА СВОЙ -->
+
+                    <a href="https://wa.me/79615265233?text=Здравствуйте!%20Хочу%20записаться%20на%20индивидуальное%20занятие" class="btn" style="margin-top: 20px; background:#3b82f6; color:white;" target="_blank">Записаться</a>
+
+                </div>
+
+                <div class="card price-card">
+
+                    <h3>Мини-группа (до 4 чел)</h3>
+
+                    <div class="price">1 000 ₽</div>
+
+                    <p>За одно занятие (90 минут)</p>
+
+                    <a href="https://wa.me/79615265233?text=Здравствуйте!%20Хочу%20записаться%20в%20мини-группу" class="btn" style="margin-top: 20px; background:#3b82f6; color:white;" target="_blank">Записаться</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ОТЗЫВЫ -->
+
+    <section id="reviews" class="reviews-section">
+
+        <div class="container">
+
+            <h2 class="section-title">Отзывы наших учеников</h2>
+
+            <div class="grid-cards">
+
+                <div class="card review-card">
+
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+
+                    <p class="review-text">"Очень помогли подтянуть математику! Дочь боялась ЕГЭ, а сдала на 85 баллов. Объясняют спокойно и понятно."</p>
+
+                    <p class="review-author">— Елена, мама Софии</p>
+
+                </div>
+
+                <div class="card review-card">
+
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+
+                    <p class="review-text">"Ходим на занятия с 7 класса. Сын перестал бояться выходить к доске, оценки в школе заметно улучшились."</p>
+
+                    <p class="review-author">— Дмитрий, папа Артема</p>
+
+                </div>
+
+            </div>
+
+            <div style="text-align: center;">
+
+                <!-- ВСТАВЬ СЮДА ССЫЛКУ НА СВОЮ GOOGLE ФОРМУ ВМЕСТО РЕШЕТКИ # -->
+
+                <a href="#" class="btn btn-form" target="_blank">Оставить свой отзыв</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ПОДВАЛ / КОНТАКТЫ -->
+
+    <footer id="contacts">
+
+        <div class="container">
+
+            <h3>Свяжитесь с нами</h3>
+
+            <p>Мы всегда рады ответить на ваши вопросы и подобрать удобное время для пробного занятия.</p>
+
+            <p>📍 г. Краснодар</p>
+
+            
+
+            <div style="margin-top: 30px;">
+
+                <!-- ЗАМЕНИ НОМЕР НА СВОЙ -->
+
+                <a href="https://wa.me/79615265233" class="btn btn-wa" style="padding: 10px 20px; font-size: 1em;" target="_blank">Написать в WhatsApp</a>
+
+            </div>
+
+            <p style="margin-top: 40px; font-size: 0.9em; opacity: 0.5;">&copy; 2026 MathEasy. Все права защищены.</p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>
